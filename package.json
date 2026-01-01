@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Developerfiyin/Be-Techified-wk3/issues"
   },
-  "homepage": "https://github.com/Developerfiyin/Be-Techified-wk3#readme"
+  "homepage": "https://github.com/Developerfiyin/Be-Techified-wk3#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
