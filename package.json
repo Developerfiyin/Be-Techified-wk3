@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Developerfiyin/Be-Techified-wk3#readme",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "nodemon": "^3.1.11"
   }
 }
