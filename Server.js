@@ -2,7 +2,7 @@ require("dotenv").config; //LOADS ENV
 
 const express = require('express')
 const app = express()
-const port = process.env.config() // MOved port to dot env
+const port = process.env.config() // MOVED PORT TO DOTENV
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
