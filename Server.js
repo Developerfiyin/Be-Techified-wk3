@@ -1,4 +1,4 @@
-require("dotenv").config
+require("dotenv").config; //LOADS ENV
 
 const express = require('express')
 const app = express()
