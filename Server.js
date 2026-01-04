@@ -18,7 +18,7 @@ app.get('/user/:id', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.send('The assignment says TWO API is ready!')
+  res.send(" Hello World! ")
 });
 
 app.listen(port, () => {
