@@ -11,13 +11,13 @@ app.post('/users', (req, res) => {
   res.json({echoed: req.body });   // REQ.BODY IS NOW AVAILABLE
 });
 
-app.get('/user/:id', (req, res) => {
+app.get('/users/:id', (req, res) => {
   const id = req.params.id
   console.log(id)
   res.send(id)
 });
 
-app.get('/u', (req, res) => {
+app.get('/y', (req, res) => {
   res.send('The assignment says WEEK TWO API!')
 });
 
