@@ -1,13 +1,26 @@
-require('dotenv').config()
-
-import express from 'express'
-
+ require("dotenv").config() //Loads env
+ 
+ const express = require('express')
 const app = express()
+const port = process.env.PORT;
 
-app.get('/', (req, res) => {
-  res.send('Hello World')
-})
+app.use(express.json()); // ADDED EXPRESS MIDDLEWARE WHICH IS EXPRESS.JSON
 
-app.listen(3000, () => {
-  console.log('Server is running on http://localhost:3000')
+app.post('/user', (req, res) => {
+  console.log("req.body ")
+  res.json({echoed: req.body });   // REQ.BODY IS NOW AVAILABLE
+});
+
+app.get('/user/:id', (req, res) => {
+  const id = req.params.id
+  console.log(id)
+  res.send(id)
+});
+
+app.get('/u', (req, res) => {
+  res.send('The assignment says WEEK TWO API!')
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
 })
