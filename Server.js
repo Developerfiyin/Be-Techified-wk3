@@ -6,7 +6,7 @@ const port = process.env.PORT;
 
 app.use(express.json()); // ADDED EXPRESS MIDDLEWARE WHICH IS EXPRESS.JSON
 
-app.post('/user', (req, res) => {
+app.post('/echo', (req, res) => {
   console.log("req.body ")
   res.json({echoed: req.body });   // REQ.BODY IS NOW AVAILABLE
 });
@@ -17,8 +17,8 @@ app.get('/user/:id', (req, res) => {
   res.send(id)
 });
 
-app.get('/user', (req, res) => {
-  res.send('The assignment says WEEK TWO API is ready!')
+app.get('/', (req, res) => {
+  res.send('The assignment says TWO API is ready!')
 });
 
 app.listen(port, () => {
