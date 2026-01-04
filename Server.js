@@ -6,7 +6,7 @@ const port = process.env.PORT;
 
 app.use(express.json()); // ADDED EXPRESS MIDDLEWARE WHICH IS EXPRESS.JSON
 
-app.post('/user', (req, res) => {
+app.post('/users', (req, res) => {
   console.log("req.body ")
   res.json({echoed: req.body });   // REQ.BODY IS NOW AVAILABLE
 });
