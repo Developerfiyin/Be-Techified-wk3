@@ -5,13 +5,11 @@ const express = require('express')
 const app = express();
 const port = process.env.PORT
 
-app.use(express.json())
-
-app.use(express.json()); // ADDED EXPRESS MIDDLEWARE WHICH IS EXPRESS.JSON
+app.use(express.json()) // ADDED EXPRESS MIDDLEWARE WHICH IS EXPRESS.JSON
 
 app.post('/user', (req, res) => {
   console.log("req.body ")
-  res.json({echoed: req.body });   // REQ.BODY IS NOW AVAILABLE
+  res.json({echoed: req.body});   // REQ.BODY IS NOW AVAILABLE
 });
 
 app.get('/hello', (req, res) => {
