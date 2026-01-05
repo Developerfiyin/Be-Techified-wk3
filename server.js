@@ -16,9 +16,21 @@ let todos = [
   { id: crypto.randomUUID(), name : "peace" , task : "Build CRUDE Api", user : "Ss1" , complete : false},
   { id: crypto.randomUUID(), name : "fiyin", user : "SS2", complete: false }
 ] // ADDED OBJECT TO ARRAYS
-app.get('/todos', (req, res) => {
+
+app.get('/hello', (req, res) => {
   res.send('Hello Fiyinfoluwa, I am worried that my code is not working!')
 });
+
+
+app.get('/todos' , (req, res) => {
+  res.send(200).json(todos) //Sends Array as Object
+});
+
+app.post('/todos', (req, res) => {
+  const NewTodos = {id : todos.length + 1 , ...req.body }
+  todos.push;
+  res.send(201).json(NewTodos);
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
