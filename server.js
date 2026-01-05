@@ -1,11 +1,11 @@
-require("dotenv").config()
+require("dotenv").config();
 
 const express = require('express')
 const app = express()
 const port = process.env.PORT
 
 app.get('/hello', (req, res) => {
-  res.send('Hello Fiyinfoluwa !')
+  res.send('Hello Fiyinfoluwa! I AM WORRIED ')
 });
 
 
