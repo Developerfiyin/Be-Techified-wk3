@@ -13,7 +13,7 @@ app.post('/user', (req, res) => {
 });
 
 app.get('/hello', (req, res) => {
-  res.send('Hello Fiyinfoluwa, I am worried that my code aint working!')
+  res.send('Hello Fiyinfoluwa, I am worried that my code is not working!')
 });
 
 app.listen(port, () => {
