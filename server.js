@@ -30,6 +30,13 @@ app.post('/todos', (req, res) => {
   const NewTodos = {id : todos.length + 1 , ...req.body }
   todos.push;
   res.send(201).json(NewTodos);
+});
+
+app.patch('/todos/:id', (req, res) => {
+  const todo = todos.find( (t) => t.id === parseInt(req.params.id));
+  if(!todo) return res.status(404).json({message : "Todo Not Found"})
+    Object.assign(todo, req.body); // SUCESSFULLY MERGE
+  res.status(200).json(todo);
 })
 
 app.listen(port, () => {
