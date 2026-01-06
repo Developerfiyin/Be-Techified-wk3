@@ -30,7 +30,7 @@ app.post('/todos', (req, res) => {
   const NewTodos = {id : todos.length + 1 , ...req.body }
   todos.push;
   res.send(201).json(NewTodos);
-});
+});  //POST REQUEST
 
 //PATCH Update -partial
 app.patch('/todos/:id', (req, res) => {
