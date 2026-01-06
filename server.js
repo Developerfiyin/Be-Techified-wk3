@@ -36,7 +36,7 @@ app.post('/todos', (req, res) => {
 app.patch('/todos/:id', (req, res) => {
   const todo = todos.find((t) => t.id === parseInt(req.params.id));
   if(!todo) return res.status(404).json({message : "Todo Not Found"})
-    Object.assign(todo, req.body); // SUCESSFULLY MERGE TODOOS
+    Object.assign(todo, req.body); // SUCESSFULLY MERGE TODOS
   res.status(200).json(todo);
 });
 
@@ -54,5 +54,5 @@ res.status(204).send();
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-});
+});    //PORT HIDDEN SAFELY
 
