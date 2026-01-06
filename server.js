@@ -21,7 +21,6 @@ app.get('/hello', (req, res) => {
   res.send('Hello Fiyinfoluwa, I am worried that my code is not working!')
 });  //Get request
 
-
 app.get('/todos' , (req, res) => {
   res.send(200).json(todos) //Sends Array as Object
 });
@@ -52,5 +51,5 @@ res.status(204).send();
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-});    //PORT HIDDEN SAFELY
+});  //PORT HIDDEN SAFELY
 
