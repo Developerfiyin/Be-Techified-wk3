@@ -32,7 +32,7 @@ app.post('/todos', (req, res) => {
   res.send(201).json(NewTodos);
 });  //POST REQUEST
 
-//PATCH Update -partial
+//PATCH Update - partial
 app.patch('/todos/:id', (req, res) => {
   const todo = todos.find((t) => t.id === parseInt(req.params.id));
   if(!todo) return res.status(404).json({message : "Todo Not Found"})
@@ -49,8 +49,6 @@ if(todos.length === initialLength )
 return  res.status(404).json({Error : 'not Found'})
 res.status(204).send();
 }); // SUCCESSFULLY DELETED!
-
-
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
