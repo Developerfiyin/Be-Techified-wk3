@@ -36,7 +36,7 @@ app.post('/todos', (req, res) => {
 app.patch('/todos/:id', (req, res) => {
   const todo = todos.find((t) => t.id === parseInt(req.params.id));
   if(!todo) return res.status(404).json({message : "Todo Not Found"})
-    Object.assign(todo, req.body); // SUCESSFULLY MERGE
+    Object.assign(todo, req.body); // SUCESSFULLY MERGE TODOOS
   res.status(200).json(todo);
 });
 
@@ -49,6 +49,7 @@ if(todos.length === initialLength )
 return  res.status(404).json({Error : 'not Found'})
 res.status(204).send();
 }); // SUCCESSFULLY DELETED!
+
 
 
 app.listen(port, () => {
