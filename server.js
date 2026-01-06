@@ -45,9 +45,10 @@ app.delete('todos/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const initialLength = todos.length;
   todos = todos.filter((t) => t.id !== id)//ARRAY.FILTER - NON-DESTRUCRTIVE
-})
 if(todos.length === initialLength )
-res.status(404).json({Error : 'not Found'})
+return  res.status(404).json({Error : 'not Found'})
+res.status(204).send();
+}); // SUCCESSFULLY DELETED!
 
 
 app.listen(port, () => {
