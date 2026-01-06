@@ -34,11 +34,21 @@ app.post('/todos', (req, res) => {
 
 //PATCH Update -partial
 app.patch('/todos/:id', (req, res) => {
-  const todo = todos.find( (t) => t.id === parseInt(req.params.id));
+  const todo = todos.find((t) => t.id === parseInt(req.params.id));
   if(!todo) return res.status(404).json({message : "Todo Not Found"})
     Object.assign(todo, req.body); // SUCESSFULLY MERGE
   res.status(200).json(todo);
+});
+
+//DELETE 
+app.delete('todos/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const initialLength = todos.length;
+  todos = todos.filter((t) => t.id !== id)//ARRAY.FILTER - NON-DESTRUCRTIVE
 })
+if(todos.length === initialLength )
+res.status(404).json({Error : 'not Found'})
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
