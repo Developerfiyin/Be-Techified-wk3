@@ -19,7 +19,7 @@ let todos = [
 
 app.get('/hello', (req, res) => {
   res.send('Hello Fiyinfoluwa, I am worried that my code is not working!')
-});
+});  //Get request
 
 
 app.get('/todos' , (req, res) => {
