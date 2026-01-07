@@ -11,6 +11,8 @@ app.post('/user', (req, res) => {
   res.json({echoed: req.body});   // REQ.BODY IS NOW AVAILABLE
 });
 
+
+// IN-MEMORY DATA STORE (Created a fake database using array of objects)
 let todos = [
   { id: crypto.randomUUID(), name : "peace" , task : "Build CRUDE Api", user : "Ss1" , complete : false},
   { id: crypto.randomUUID(), name : "fiyin", task: "LEARN NODE" ,  user : "SS2", complete: false }
