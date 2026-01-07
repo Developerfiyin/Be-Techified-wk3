@@ -1,9 +1,8 @@
 require("dotenv").config();
 
-
 const express = require('express')
 const app = express();
-const port = process.env.PORT
+const port = process.env.PORT // 3000 PORT ALTERNATIVE
 
 app.use(express.json()) // ADDED EXPRESS MIDDLEWARE WHICH IS EXPRESS.JSON
 
@@ -14,12 +13,12 @@ app.post('/user', (req, res) => {
 
 let todos = [
   { id: crypto.randomUUID(), name : "peace" , task : "Build CRUDE Api", user : "Ss1" , complete : false},
-  { id: crypto.randomUUID(), name : "fiyin", user : "SS2", complete: false }
+  { id: crypto.randomUUID(), name : "fiyin", task: "LEARN NODE" ,  user : "SS2", complete: false }
 ] // ADDED OBJECT TO ARRAYS
 
 app.get('/hello', (req, res) => {
   res.send('Hello Fiyinfoluwa, I am worried that my code is not working!')
-});  //Get request
+});  //GET Request
 
 app.get('/todos' , (req, res) => {
   res.send(200).json(todos) //Sends Array as Object
@@ -39,7 +38,7 @@ app.patch('/todos/:id', (req, res) => {
   res.status(200).json(todo);
 });
 
-//DELETE 
+//DELETE CRUDE API
 app.delete('todos/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const initialLength = todos.length;
