@@ -18,7 +18,9 @@ let todos = [
 
 app.get('/hello', (req, res) => {
   res.send('Hello Fiyinfoluwa, I am worried that my code is not working!')
-});  //GET Request
+});  //GET REQUEST PATH
+
+//GET REQUEST - READ
 
 app.get('/todos' , (req, res) => {
   res.send(200).json(todos) //Sends Array as Object
