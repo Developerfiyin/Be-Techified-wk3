@@ -16,7 +16,7 @@ app.post('/user', (req, res) => {
 let todos = [
   { id: crypto.randomUUID(), name : "peace" , task : "Build CRUDE Api", user : "Ss1" , complete : false},
   { id: crypto.randomUUID(), name : "fiyin", task: "LEARN NODE" ,  user : "SS2", complete: false }
-] // ADDED OBJECT TO ARRAYS
+]; // ADDED OBJECT TO ARRAYS
 
 app.get('/hello', (req, res) => {
   res.send('Hello Fiyinfoluwa, I am worried that my code is not working!')
