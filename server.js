@@ -31,7 +31,7 @@ app.get('/todos' , (req, res) => {
 app.post('/todos', (req, res) => {
   const NewTodos = {id : todos.length + 1 , ...req.body }
   todos.push;
-  res.send(201).json(NewTodos);
+  res.status(201).json(NewTodos);
 });  //POST REQUEST
 
 //PATCH Update - partial
