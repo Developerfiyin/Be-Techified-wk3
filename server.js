@@ -19,13 +19,13 @@ let todos = [
 ]; // ADDED OBJECT TO ARRAYS
 
 app.get('/hello', (req, res) => {
-  res.send('Hello Fiyinfoluwa, I am worried that my code is not working!')
+  res.status('Hello Fiyinfoluwa, I am worried that my code is not working!')
 });  //GET REQUEST PATH
 
 //GET REQUEST - READ
 
 app.get('/todos' , (req, res) => {
-  res.send(200).json(todos) //Sends Array as Object
+  res.status(200).json(todos) //Sends Array as Object
 });
 
 app.post('/todos', (req, res) => {
