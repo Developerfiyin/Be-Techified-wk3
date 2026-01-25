@@ -1,5 +1,5 @@
 const cors = require('cors')
-
+const logRequest = require('./logger.js ')
 require("dotenv").config();
 const corsOption = {
   origin: []
@@ -13,7 +13,7 @@ const port = process.env.PORT // 3000 PORT ALTERNATIVE
 // Adds headers: Access-Control-Allow-Origin: *
 app.use(cors(corsOption))
 app.use(express.json()) // ADDED EXPRESS MIDDLEWARE WHICH IS EXPRESS.JSON
-
+app.use(logRequest)
 app.post('/user', (req, res) => {
   console.log("req.body ")
   res.json({echoed: req.body});   // REQ.BODY IS NOW AVAILABLE
