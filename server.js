@@ -1,9 +1,17 @@
+const cors = require('cors')
+
 require("dotenv").config();
+const corsOption = {
+  origin: []
+  //Some legacy browers (IELL) choke on 204
+}
 
 const express = require('express')
 const app = express();
 const port = process.env.PORT // 3000 PORT ALTERNATIVE
 
+// Adds headers: Access-Control-Allow-Origin: *
+app.use(cors(corsOption))
 app.use(express.json()) // ADDED EXPRESS MIDDLEWARE WHICH IS EXPRESS.JSON
 
 app.post('/user', (req, res) => {
