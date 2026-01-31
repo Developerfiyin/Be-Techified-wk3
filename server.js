@@ -5,7 +5,8 @@ const corsOption = {
   origin: []
   //Some legacy browers (IELL) choke on 204
 }
-
+ 32843 phone password 
+ 12345677 wifi password
 const express = require('express')
 const app = express();
 const port = process.env.PORT // 3000 PORT ALTERNATIVE
