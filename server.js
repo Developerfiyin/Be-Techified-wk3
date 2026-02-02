@@ -48,9 +48,13 @@ app.get('/hello', (req, res) => {
 
 
 //GET REQUEST FOR ID ONE
-app.get('/hello/1' ,  (req, res) => {
+app.get('/todos/:id' ,  (req, res) => {
+  const todoId = todos.find(t => t.id === parseInt(req.params.id));
+  const todo = todos.find((t) => {
+    return t.id === todoId
+  })
   res.status(200).json(task)
-});
+})
 
 app.get('/todos' , (req, res) => {
   res.status(200).json(todos) //Sends Array as Object
