@@ -1,4 +1,5 @@
-const cors = require('cors')
+const cors = require('cors');
+const { parse } = require('dotenv');
 //const logRequest = require('./logger.js ')
 require("dotenv").config();
 const corsOption = {
@@ -47,14 +48,26 @@ app.get('/hello', (req, res) => {
 
 
 
-//GET REQUEST FOR ID ONE
+//GET REQUEST FOR ID ONE Assignment for week 3 (1 of 3)
 app.get('/todos/:id' ,  (req, res) => {
-  const todoId = todos.find(t => t.id === parseInt(req.params.id));
+  const todoId = parseInt(req.params.id);
   const todo = todos.find((t) => {
     return t.id === todoId
   })
-  res.status(200).json(task)
+  res.status(200).json(todo )
 })
+
+//  VALIDATE POST FOR ID TWO Assignment for week 3 (2 of 3)
+
+app.post('/todos', (req, res) => {
+  const { task, user, complete } = req.body;
+  if (!task || !user || complete === undefined) {
+    return res.status(400).json({ error: 'Missing required fields: task, user, complete' });
+  }
+  const newTodos = {id : todos.length + 1 , ...req.body }
+  todos.push(newTodos);
+  res.status(201).json(newTodos);
+});  //POST REQUEST
 
 app.get('/todos' , (req, res) => {
   res.status(200).json(todos) //Sends Array as Object
