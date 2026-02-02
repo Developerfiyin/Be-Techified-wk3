@@ -1,12 +1,26 @@
 const cors = require('cors')
-const logRequest = require('./logger.js ')
+//const logRequest = require('./logger.js ')
 require("dotenv").config();
 const corsOption = {
   origin: []
   //Some legacy browers (IELL) choke on 204
 }
- 32843 phone password 
+
+
+ {/*32843 phone password 
  12345677 wifi password
+ 
+ 
+ const logRequest = (req, res, next) => {
+ const timeStamp = new Date().toISOString()
+console.log(`${timeStamp} - ${req.method} - ${req.url} from ${req.ip}`);
+next()
+
+};
+module.exports = logRequest;
+ 
+ */}
+
 const express = require('express')
 const app = express();
 const port = process.env.PORT // 3000 PORT ALTERNATIVE
@@ -14,7 +28,7 @@ const port = process.env.PORT // 3000 PORT ALTERNATIVE
 // Adds headers: Access-Control-Allow-Origin: *
 app.use(cors(corsOption))
 app.use(express.json()) // ADDED EXPRESS MIDDLEWARE WHICH IS EXPRESS.JSON
-app.use(logRequest)
+//app.use(logRequest)
 app.post('/user', (req, res) => {
   console.log("req.body ")
   res.json({echoed: req.body});   // REQ.BODY IS NOW AVAILABLE
@@ -23,15 +37,20 @@ app.post('/user', (req, res) => {
 
 // IN-MEMORY DATA STORE (Created a fake database using array of objects)
 let todos = [
-  { id: crypto.randomUUID(), name : "peace" , task : "Build CRUDE Api", user : "Ss1" , complete : false},
-  { id: crypto.randomUUID(), name : "fiyin", task: "LEARN NODE" ,  user : "SS2", complete: false }
+  { id: crypto.randomUUID(), task : "Build CRUDE Api", user : "Ss1" , complete : false},
+  { id: crypto.randomUUID(),  task: "LEARN NODE" ,  user : "SS2", complete: false }
 ]; // ADDED OBJECT TO ARRAYS
 
 app.get('/hello', (req, res) => {
   res.status('Hello Fiyinfoluwa, I am worried that my code is not working!')
 });  //GET REQUEST PATH
 
-//GET REQUEST - READ
+
+
+//GET REQUEST FOR ID ONE
+app.get('/hello/1' ,  (req, res) => {
+  res.status(200).json(task)
+});
 
 app.get('/todos' , (req, res) => {
   res.status(200).json(todos) //Sends Array as Object
