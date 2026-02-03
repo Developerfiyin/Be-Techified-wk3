@@ -69,6 +69,18 @@ app.post('/todos', (req, res) => {
   res.status(201).json(newTodos);
 });  //POST REQUEST
 
+//GET REQUEST FOR ALL TODOS Assignment for week 3 (3 of 3)
+
+app.post('/todos', (req, res) => {
+  const { task, user, complete } = req.body;
+  if (!task || !user || complete === undefined) {
+    return res.status(400).json({ error: 'Missing required fields: task, user, complete' });
+  }
+  const newTodos = {id : todos.length + 1 , ...req.body }
+  todos.push(newTodos);
+  res.status(201).json(newTodos);
+}); 
+
 app.get('/todos' , (req, res) => {
   res.status(200).json(todos) //Sends Array as Object
 });
