@@ -39,7 +39,8 @@ app.post('/user', (req, res) => {
 // IN-MEMORY DATA STORE (Created a fake database using array of objects)
 let todos = [
   { id: crypto.randomUUID(), task : "Build CRUDE Api", user : "Ss1" , complete : false},
-  { id: crypto.randomUUID(),  task: "LEARN NODE" ,  user : "SS2", complete: false }
+  { id: crypto.randomUUID(),  task: "LEARN NODE" ,  user : "SS2", complete: false },
+  {id: crypto.randomUUID(), task: 'Sumbit assignment', user: 'ss3', complete:false}
 ]; // ADDED OBJECT TO ARRAYS
 
 app.get('/hello', (req, res) => {
@@ -71,14 +72,11 @@ app.post('/todos', (req, res) => {
 
 //GET REQUEST FOR ALL TODOS Assignment for week 3 (3 of 3)
 
-app.post('/todos', (req, res) => {
-  const { task, user, complete } = req.body;
-  if (!task || !user || complete === undefined) {
-    return res.status(400).json({ error: 'Missing required fields: task, user, complete' });
-  }
-  const newTodos = {id : todos.length + 1 , ...req.body }
-  todos.push(newTodos);
-  res.status(201).json(newTodos);
+app.post('/todos/completed', (req, res) => {
+  const completed  = todos.filter((t) => {
+    return t.completed === true;
+  })
+  res.status(200).json(completed);
 }); 
 
 app.get('/todos' , (req, res) => {
