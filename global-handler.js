@@ -1,5 +1,3 @@
-
-
 const errorHandler = (err, req, res, next) => {
     console.error(err.message); // Log the error message for debugging
     console.error(err.stack || '');   

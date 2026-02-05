@@ -51,11 +51,20 @@ app.get('/hello', (req, res) => {
 
 //GET REQUEST FOR ID ONE Assignment for week 3 (1 of 3)
 app.get('/todos/:id' ,  (req, res) => {
-  const todoId = parseInt(req.params.id);
-  const todo = todos.find((t) => {
-    return t.id === todoId
-  })
-  res.status(200).json(todo )
+ try {
+   const todoId = parseInt(req.params.id);
+   if(isNaN(id)) {
+    throw new Error("Invalid ID");
+    
+   }
+  const todo = todos.find((t) =>  t.id === todoId )
+  if (!todo) {
+  res.status(400).json({message: "Todo not found"} )
+  }
+   res.status(200).json(todo )
+ } catch (error) {
+  next(error)
+ }
 })
 
 //  VALIDATE POST FOR ID TWO Assignment for week 3 (2 of 3)
