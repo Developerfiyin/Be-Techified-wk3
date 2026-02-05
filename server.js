@@ -1,6 +1,6 @@
 const cors = require('cors');
 const logRequest = require('./middlewares/logger')
-const validate = require("./validation")
+const validate = require("./middlewares/validation")
 const express = require('express')
 const app = express();
 const globalHandler = require("./middlewares/global-handler")
