@@ -3,12 +3,14 @@ const logRequest = require('./logger')
 const validate = require("./validation")
 const express = require('express')
 const app = express();
+const globalHandler = require("./global-handler")
 const port = process.env.PORT // 3000 PORT ALTERNATIVE
 app.use(cors(corsOptions))
 
 app.use(express.json()) // ADDED EXPRESS MIDDLEWARE WHICH IS EXPRESS.JSON
 require("dotenv").config();
 app.use(logRequest)
+
 {/*const corsOption = { 
   origin: [] 
   //Some legacy browers (IELL) choke on 204
@@ -117,6 +119,7 @@ res.status(204).send();
 }
 }); // SUCCESSFULLY DELETED!
 
+app.use(globalHandler);
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 });  //PORT HIDDEN SAFELY
