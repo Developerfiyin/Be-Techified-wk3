@@ -1,9 +1,9 @@
 const cors = require('cors');
-const logRequest = require('./logger')
+const logRequest = require('./middlewares/logger')
 const validate = require("./validation")
 const express = require('express')
 const app = express();
-const globalHandler = require("./global-handler")
+const globalHandler = require("./middlewares/global-handler")
 const port = process.env.PORT // 3000 PORT ALTERNATIVE
 app.use(cors(corsOptions))
 
@@ -11,13 +11,13 @@ app.use(express.json()) // ADDED EXPRESS MIDDLEWARE WHICH IS EXPRESS.JSON
 require("dotenv").config();
 app.use(logRequest)
 
-{/*const corsOption = { 
-  origin: [] 
-  //Some legacy browers (IELL) choke on 204
+{/*
+
+
 }*/}
 
 var corsOptions = {
-  origin: 'http://example.com',
+  origin: 'localhost:4000',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
@@ -50,7 +50,7 @@ app.get('/hello', (req, res) => {
 
 
 //GET REQUEST FOR ID ONE Assignment for week 3 (1 of 3)
-app.get('/todos/:id' ,  (req, res) => {
+app.get('/todos/:id' ,  (req, res, next) => {
  try {
    const todoId = parseInt(req.params.id);
    if(isNaN(id)) {
@@ -69,7 +69,7 @@ app.get('/todos/:id' ,  (req, res) => {
 
 //  VALIDATE POST FOR ID TWO Assignment for week 3 (2 of 3)
 //Wrap route inside try and catch week 7 assignment
-app.post('/todos', validate, (req, res) => {
+app.post('/todos', validate, (req, res, next) => {
  try {
    const { task, user, complete } = req.body;
   if (!task || !user || complete === undefined) {
@@ -83,13 +83,19 @@ app.post('/todos', validate, (req, res) => {
  }
 });  //POST REQUEST
 
+
 //GET REQUEST FOR ALL TODOS Assignment for week 3 (3 of 3)
 
-app.post('/todos/completed', (req, res) => {
+app.post('/todos/completed', (req, res , next) => {
+try {
   const completed  = todos.filter((t) => {
     return t.completed === true;
   })
   res.status(200).json(completed);
+} catch (error) {
+  next(error)
+}
+  
 }); 
 
 app.get('/todos' , (req, res) => {
