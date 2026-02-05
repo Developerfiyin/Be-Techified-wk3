@@ -1,15 +1,22 @@
 const cors = require('cors');
-const { parse } = require('dotenv');
-//const logRequest = require('./logger.js ')
+const logRequest = require('./logger')
+const express = require('express')
+const app = express();
+const port = process.env.PORT // 3000 PORT ALTERNATIVE
+app.use(cors(corsOptions))
+
+app.use(express.json()) // ADDED EXPRESS MIDDLEWARE WHICH IS EXPRESS.JSON
 require("dotenv").config();
-const corsOption = {
-  origin: []
+app.use(logRequest)
+{/*const corsOption = { 
+  origin: [] 
   //Some legacy browers (IELL) choke on 204
-}
-{/*/var corsOptions = {
+}*/}
+
+var corsOptions = {
   origin: 'http://example.com',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}*/}
+}
 
  {/*32843 phone password 
  12345677 wifi password
@@ -17,13 +24,10 @@ const corsOption = {
  
  */}
 
-const express = require('express')
-const app = express();
-const port = process.env.PORT // 3000 PORT ALTERNATIVE
+
 
 // Adds headers: Access-Control-Allow-Origin: *
-app.use(cors(corsOption))
-app.use(express.json()) // ADDED EXPRESS MIDDLEWARE WHICH IS EXPRESS.JSON
+
 //app.use(logRequest)
 app.post('/user', (req, res) => {
   console.log("req.body ")
