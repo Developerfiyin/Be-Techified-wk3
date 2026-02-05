@@ -6,19 +6,14 @@ const corsOption = {
   origin: []
   //Some legacy browers (IELL) choke on 204
 }
-
+{/*/var corsOptions = {
+  origin: 'http://example.com',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}*/}
 
  {/*32843 phone password 
  12345677 wifi password
  
- 
- const logRequest = (req, res, next) => {
- const timeStamp = new Date().toISOString()
-console.log(`${timeStamp} - ${req.method} - ${req.url} from ${req.ip}`);
-next()
-
-};
-module.exports = logRequest;
  
  */}
 
