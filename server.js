@@ -1,3 +1,4 @@
+require("dotenv").config();
 const cors = require('cors');
 const logRequest = require('./middlewares/logger')
 const validate = require("./middlewares/validation")
@@ -8,7 +9,7 @@ const port = process.env.PORT // 3000 PORT ALTERNATIVE
 app.use(cors(corsOptions))
 
 app.use(express.json()) // ADDED EXPRESS MIDDLEWARE WHICH IS EXPRESS.JSON
-require("dotenv").config();
+
 app.use(logRequest)
 
 {/*
@@ -17,7 +18,7 @@ app.use(logRequest)
 }*/}
 
 var corsOptions = {
-  origin: 'localhost:4000',
+  origin: 'http://localhost:5173',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
@@ -135,7 +136,8 @@ res.status(204).send();
 }); // SUCCESSFULLY DELETED!
 
 app.use(globalHandler);
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-});  //PORT HIDDEN SAFELY
+const PORT = 4000
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});//PORT HIDDEN SAFELY
 
