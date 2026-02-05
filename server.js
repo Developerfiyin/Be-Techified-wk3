@@ -1,5 +1,6 @@
 const cors = require('cors');
 const logRequest = require('./logger')
+const validate = require("./validation")
 const express = require('express')
 const app = express();
 const port = process.env.PORT // 3000 PORT ALTERNATIVE
@@ -23,8 +24,6 @@ var corsOptions = {
  
  
  */}
-
-
 
 // Adds headers: Access-Control-Allow-Origin: *
 
@@ -58,15 +57,19 @@ app.get('/todos/:id' ,  (req, res) => {
 })
 
 //  VALIDATE POST FOR ID TWO Assignment for week 3 (2 of 3)
-
-app.post('/todos', (req, res) => {
-  const { task, user, complete } = req.body;
+//Wrap route inside try and catch week 7 assignment
+app.post('/todos', validate, (req, res) => {
+ try {
+   const { task, user, complete } = req.body;
   if (!task || !user || complete === undefined) {
     return res.status(400).json({ error: 'Missing required fields: task, user, complete' });
   }
   const newTodos = {id : todos.length + 1 , ...req.body }
   todos.push(newTodos);
   res.status(201).json(newTodos);
+ } catch (error) {
+  next(error)
+ }
 });  //POST REQUEST
 
 //GET REQUEST FOR ALL TODOS Assignment for week 3 (3 of 3)
@@ -90,20 +93,28 @@ app.post('/todos', (req, res) => {
 
 //PATCH Update - partial
 app.patch('/todos/:id', (req, res) => {
-  const todo = todos.find((t) => t.id === parseInt(req.params.id));
+  try {
+    const todo = todos.find((t) => t.id === parseInt(req.params.id));
   if(!todo) return res.status(404).json({message : "Todo Not Found"})
     Object.assign(todo, req.body); // SUCESSFULLY MERGE TODOS
   res.status(200).json(todo);
+  } catch (error) {
+    next(error)
+  }
 });
 
 //DELETE CRUDE API
 app.delete('todos/:id', (req, res) => {
-  const id = parseInt(req.params.id);
+try {
+    const id = parseInt(req.params.id);
   const initialLength = todos.length;
   todos = todos.filter((t) => t.id !== id)//ARRAY.FILTER - NON-DESTRUCRTIVE
 if(todos.length === initialLength )
 return  res.status(404).json({Error : 'not Found'})
 res.status(204).send();
+} catch (error) {
+  next(error)
+}
 }); // SUCCESSFULLY DELETED!
 
 app.listen(port, () => {
